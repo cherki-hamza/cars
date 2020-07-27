@@ -28,7 +28,10 @@
                                     <label for="photo"><span class="text-success">Ads Car Photo : </span></label>
                                     <input type="file" class="form-control" name="photo" id="photo">
                                     <br>
-                                    <img style="width: 250px;height: 70px;" class="img-fluid"  src="{{asset('storage/'.$car->car_photo)}}" alt="{{$car->marque->marque_name}}">
+
+{{--                                    <img style="width: 250px;height: 70px;" class="img-fluid"  src="{{$car->car_photo}}" alt="{{$car->marque->marque_name}}">--}}
+                                    <img style="width: 250px;height: 70px;" class="img-fluid"  src="{{$car->car_photo}}" alt="{{$car->marque->marque_name}}">
+
                                 </div>
 
                                 <div class="row form-group text-left">

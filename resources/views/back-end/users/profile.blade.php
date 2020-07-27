@@ -34,7 +34,8 @@
                         <!-- Add the bg color to the header using any of the bg-* classes -->
                         <div class="widget-user-header bg-aqua-active">
                             <div class="widget-user-image">
-                                <img style="border-radius: 80%;width: 80px;height: 80px;" id="{{$user->hasPicture()}}" class="img-circle" src="{{ $user->hasPicture()? asset('storage/'.$user->getPicture()) : $user->getGravatar()}}" />
+{{--                                <img style="border-radius: 80%;width: 80px;height: 80px;" id="{{$user->hasPicture()}}" class="img-circle" src="{{ $user->hasPicture()? asset('storage/'.$user->getPicture()) : $user->getGravatar()}}" />--}}
+                                <img style="border-radius: 80%;width: 80px;height: 80px;"  class="img-circle" src="{{ ($user->hasPicture())? $user->getPicture() : $user->getGravatar()}}"  alt=""/>
                             </div>
                             <!-- /.widget-user-image -->
                             <div class="ml-5">

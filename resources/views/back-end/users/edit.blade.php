@@ -46,7 +46,7 @@
                                     <label for="picture"><span class="text-success">Photo Profile</span></label>
                                     <input type="file" class="form-control" name="picture" id="picture">
                                     <hr>
-                                    <img style="border-radius: 100%;width: 100px;height: 100px;" id="" class="img-circle" src="{{ Auth::user()->hasPicture()? asset('storage/'.Auth::user()->getPicture()) : $user->getGravatar()}}" />
+                                    <img style="border-radius: 100%;width: 100px;height: 100px;" id="" class="img-circle" src="{{ Auth::user()->hasPicture()? Auth::user()->getPicture() : $user->getGravatar()}}" />
                                 </div>
 
                                 <div class="row form-group my-5">

@@ -44,9 +44,13 @@
                              @foreach($users as $user)
                               <tr>
                                   @if(auth()->user()->isAdmin() && $user->id == auth()->user()->id)
-                                  <td><a href="{{route('users.profile' , ['user'=>Auth::user()->id])}}"><img class="img-circle" style="border-radius: 60%;width: 40px;height: 40px;" src="{{ $user->hasPicture() ? asset('storage/'.$user->getPicture()) : $user->getGravatar()}}" /></a></td>
+
+{{--                                  <td><a href="{{route('users.profile' , ['user'=>Auth::user()->id])}}"><img class="img-circle" style="border-radius: 60%;width: 40px;height: 40px;" src="{{ $user->hasPicture() ? asset('storage/'.$user->getPicture()) : $user->getGravatar()}}" /></a></td>--}}
+                                  <td><a href="{{route('users.profile' , ['user'=>Auth::user()->id])}}"><img class="img-circle" style="border-radius: 60%;width: 40px;height: 40px;" src="{{ $user->hasPicture() ? $user->getPicture() : $user->getGravatar()}}" /></a></td>
+
                                   @else
-                                      <td><img class="user-image" src="{{ $user->hasPicture() ? asset('storage/'.$user->getPicture()) : $user->getGravatar()}}" /></td>
+{{--                                      <td><img class="user-image" src="{{ $user->hasPicture() ? asset('storage/'.$user->getPicture()) : $user->getGravatar()}}" /></td>--}}
+                                      <td><img class="user-image" style="border-radius: 60%;width: 40px;height: 40px;" src="{{ $user->hasPicture() ? $user->getPicture() : $user->getGravatar()}}" /></td>
                                   @endif
                                   <td><span class="text-primary">{{$user->id}}</span></td>
                                   <td><span class="text-primary">{{$user->name}}</span></td>

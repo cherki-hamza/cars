@@ -48,16 +48,24 @@ class CarInfosController extends Controller
            'country_id'=>'required',
         ]);
 
-         Carinfo::create([
-            'car_price'  => $request->input('price'),
-            'car_photo'  => $request->photo->store('cars-img' , 'public'),
-            'car_distance'  => $request->input('distance'),
-            'car_date_construction' => $request->input('date'),
-            'marque_id'=> $request->input('marque_id'),
-            'city_id'=> $request->input('region_id'),
-            'country_id'=> $request->input('country_id'),
-            'user_id'=> $request->input('user_id'),
-        ]);
+        if ($request->hasFile('photo')){
+            $image = $request->file('photo');
+            $input['image_name'] = time().  '.' . $image->getClientOriginalExtension();
+            $the_image = '/images/'.$input['image_name'];
+            $destinationPath = public_path('/images');
+            $image->move($destinationPath , $input['image_name']);
+            Carinfo::create([
+                'car_price'  => $request->input('price'),
+                'car_photo'  =>  $the_image,
+                'car_distance'  => $request->input('distance'),
+                'car_date_construction' => $request->input('date'),
+                'marque_id'=> $request->input('marque_id'),
+                'city_id'=> $request->input('region_id'),
+                'country_id'=> $request->input('country_id'),
+                'user_id'=> $request->input('user_id'),
+            ]);
+        }
+
         return redirect(route('cars.index'))->with('success' , '<span class="alert alert-success">the car saved successfully</span>');
     }
 
@@ -88,14 +96,19 @@ class CarInfosController extends Controller
     {
           if ($request->hasFile('photo')){
 
-              $image = $request->photo->store('cars-img' , 'public');
-              Storage::disk('public')->delete($car->car_photo);
+//              $image = $request->photo->store('cars-img' , 'public');
+//              Storage::disk('public')->delete($car->car_photo);
+              $image = $request->file('photo');
+              $input['image_name'] = time().  '.' . $image->getClientOriginalExtension();
+              $the_image = '/images/'.$input['image_name'];
+              $destinationPath = public_path('/images');
+              $image->move($destinationPath , $input['image_name']);
 
 
               $car->update([
                   'car_price'  => $request->input('price'),
                   'car_distance'  => $request->input('distance'),
-                  'car_photo'  => $image,
+                  'car_photo'  => $the_image,
                   'car_date_construction' => $request->input('date'),
                   'marque_id'=> $request->input('marque_id'),
                   'city_id'=> $request->input('region_id'),
@@ -114,18 +127,6 @@ class CarInfosController extends Controller
                   'user_id'=> $request->input('user_id'),
               ]);
           }
-
-
-
-
-//        $data = $request->only(['price','distance','date', 'marque_id','region_id','country_id','user_id']);
-//        if ($request->hasFile('photo')){
-//            $image = $request->photo->store('cars-img' , 'public');
-//            //Storage::disk('public')->delete($car->car_photo);
-//            $data['photo'] = $image;
-//        }
-//        //dd($request->all());
-//        $car->save($data);
 
         return redirect(route('cars.index'))->with('success','The Car Updated with success');
     }

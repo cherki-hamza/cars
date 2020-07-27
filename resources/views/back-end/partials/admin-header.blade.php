@@ -57,14 +57,14 @@
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <!-- The user image in the navbar-->
-                        <img class="user-image" src="{{ Auth::user()->hasPicture() ? asset('storage/'.Auth::user()->getPicture()) : Auth::user()->getGravatar()}}" />
+                        <img class="user-image" src="{{ Auth::user()->hasPicture() ? asset(Auth::user()->getPicture()) : Auth::user()->getGravatar()}}" />
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
                         <span class="hidden-xs">{{Auth::user()->name ?? ''}}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
                         <li class="user-header">
-                            <img  class="img-circle" src="{{ Auth::user()->hasPicture()? asset('storage/'.Auth::user()->getPicture()) : Auth::user()->getGravatar()}}"/>
+                            <img  class="img-circle" src="{{ Auth::user()->hasPicture()? asset(Auth::user()->getPicture()) : Auth::user()->getGravatar()}}"/>
 
                             <p>
                                 {{Auth::user()->name ?? ''}}
@@ -114,7 +114,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img style="border-radius: 60%;width: 40px;height: 40px;" class="user-image" src="{{ Auth::user()->hasPicture()? asset('storage/'.Auth::user()->getPicture()) : Auth::user()->getGravatar()}}"/>
+                <img style="border-radius: 60%;width: 40px;height: 40px;" class="user-image" src="{{ Auth::user()->hasPicture()? asset(Auth::user()->getPicture()) : Auth::user()->getGravatar()}}"/>
             </div>
             <div class="pull-left info">
                 <p>{{Auth::user()->name ?? ''}}</p>

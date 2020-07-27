@@ -34,7 +34,7 @@
                               <div class="carousel-inner">
                                   @foreach($cars as $key => $car)
                                       <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
-                                          <img class="d-block w-100" src="{{'storage/'.$car->car_photo()}}" alt="dev">
+                                          <img class="d-block w-100" src="{{$car->car_photo()}}" alt="dev">
                                           <div class="carousel-caption text-right d-none d-md-block">
                                               <h1 class="text-danger font-weight-bold">marque name :{{$car->marque->marque_name}}</h1>
                                               <h2 class="text-primary">Country :{{$car->country->country_name}}</h2>
@@ -191,7 +191,7 @@
                                    <div class="carousel-inner">
                                        @foreach($cars as $key => $car)
                                            <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
-                                               <img class="d-block w-100" src="{{'storage/'.$car->car_photo()}}" alt="dev">
+                                               <img class="d-block w-100" src="{{$car->car_photo()}}" alt="dev">
                                                <div class="carousel-caption text-right d-none d-md-block">
                                                    <h1 class="text-danger font-weight-bold">marque name :{{$car->marque->marque_name}}</h1>
                                                    <h2 class="text-primary">Country :{{$car->country->country_name}}</h2>

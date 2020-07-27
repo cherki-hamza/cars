@@ -36,7 +36,10 @@
 
                             <div class="col-md-8 align-content-center">
                                 <div class="card">
-                                    <img src="/storage/{{$car->car_photo}}" style="max-width: 600px;max-height: 400px;" class="card-img-top" alt="...">
+
+{{--                                    <img src="/storage/{{$car->car_photo}}" style="max-width: 600px;max-height: 400px;" class="card-img-top" alt="...">--}}
+                                    <img src="{{$car->car_photo}}" style="max-width: 600px;max-height: 400px;" class="card-img-top" alt="...">
+
                                     <div class="card-body">
                                         <h5 class="card-title">Car Name: <span class="text-success font-weight-bold">{{$car->marque->marque_name}}</span></h5>
                                         <p class="card-text">car Price: {{$car->car_price}}</p>

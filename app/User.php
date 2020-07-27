@@ -58,9 +58,9 @@ class User extends Authenticatable
     // check if user Profile has a picture in database ==> true : see the user profile has a picture | and false see the user dont have a picture in database
     public function hasPicture(){
         if ($this->profile->picture != null){
-            return false;
-        }else{
             return true;
+        }else{
+            return false;
         }
     }
 

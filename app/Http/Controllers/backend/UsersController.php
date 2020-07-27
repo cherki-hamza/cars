@@ -41,8 +41,14 @@ class UsersController extends Controller
         $profile = $user->profile;
         $data = $request->all();
         if($request->hasFile('picture')){
-            $picture = $request->picture->store('Profile-img','public');
-            $data['picture'] = $picture;
+//            $picture = $request->picture->store('Profile-img','public');
+//            $data['picture'] = $picture;
+            $image = $request->file('picture');
+            $input['image_name'] = time().  '.' . $image->getClientOriginalExtension();
+            $the_image = '/images/'.$input['image_name'];
+            $destinationPath = public_path('/images');
+            $image->move($destinationPath , $input['image_name']);
+            $data['picture'] = $the_image;
         }
         $profile->update($data);
         return redirect(route('users.index'));

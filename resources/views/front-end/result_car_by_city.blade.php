@@ -27,7 +27,7 @@
                     @foreach($cars_by_city as $car)
                         <div class="col-md-4">
                             <div class="card" style="width: 18rem;">
-                                <img src="/storage/{{$car->car_photo}}" class="card-img-top" alt="...">
+                                <img src="{{$car->car_photo}}" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">Car Name: <span class="text-success font-weight-bold">{{$car->marque->marque_name}}</span></h5>
                                     <p class="card-text">car Price: {{$car->car_price}}</p>

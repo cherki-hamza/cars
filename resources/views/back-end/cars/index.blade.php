@@ -54,7 +54,10 @@
                                  @foreach($cars as $car)
                                      <tr>
                                          <td>{{$car->id}}</td>
-                                         <td><img style="width: 150px;height: 70px;" class="img-fluid" src="{{asset('storage/'.$car->car_photo)}}" alt="{{$car->marque->marque_name}}"></td>
+
+{{--                                      <td><img style="width: 150px;height: 70px;" class="img-fluid" src="{{asset('storage/'.$car->car_photo)}}" alt="{{$car->marque->marque_name}}"></td>--}}
+                                         <td><img style="width: 150px;height: 70px;" class="img-fluid" src="{{$car->car_photo}}" alt="{{$car->marque->marque_name}}"></td>
+
                                          <td>{{$car->user->name}}</td>
                                          <td>{{$car->marque->marque_name}}</td>
                                          <td>{{$car->car_price}}</td>
